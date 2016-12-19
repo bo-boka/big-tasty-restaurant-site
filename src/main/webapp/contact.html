@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+		<title>Contact Page - Sarah's Big Tasty</title>
+		<link href="css/restaurantStyles7.css" rel="stylesheet" type="text/css">
+		<link href="https://fonts.googleapis.com/css?family=Calligraffitti" rel="stylesheet">
+		<script>
+			
+			function checkFields() {
+				if (checkName() == false || checkContact() == false || reasonInfo() == false || timeChecked() == false) {
+					return false;
+				} else {
+					return true;
+				}
+			}
+			
+			function checkName(){
+				var name = document.getElementById("inputName").value;
+				if (!name) {
+					alert("Please fill in your name.");
+					return false;
+				}
+			}
+			
+			function checkContact() {
+				var email = document.getElementById("inputEmail").value;
+				var phone = document.getElementById("inputPhone").value;
+				if (!email && !phone) {
+					alert("Please give us at least one way to reach you.");
+					return false;
+				}
+			}
+			
+			function reasonInfo() {
+				var reason = document.getElementById("inquiryReason").value;
+				var addInfo = document.getElementById("additionalInfo").value;
+				if (reason == 'other' && !addInfo) {
+					alert("If your reason for inquiry was 'other' please give us some additional information. Thank you!");
+					return false;
+				}
+			}
+			
+			function timeChecked() {
+				var times = document.getElementsByName('bestTime[]');
+				var count = 0;
+				for (var i = 0; i < times.length; i++) {
+					if (times[i].checked) {
+						count++;
+					}
+				}
+				if (count == 0) {
+					alert("When is the best time to reach you?");
+					return false;
+				}
+			}
+			
+		</script>
+	</head>
+	<body>
+		<header>
+			<div class="centered" id="name"><h1>Sarah's Big Tasty</h1></div>
+			<nav>
+				<ul class="row nav nav-pills">
+					<li class="col-lg-1 col-md-1 col-sm-1 col-xs-12"><a href="index.html"><span class="glyphicon glyphicon-home"></span></a></li>
+					<li class="col-lg-1 col-md-1 col-sm-2 col-xs-12"><a href="menu.html">Menu</a></li>
+					<li class="col-lg-2 col-md-2 col-sm-3 col-xs-12"><a href="contact.html">Contact Us</a></li>
+				</ul>
+			</nav>
+			<noscript>
+				<div class="container">
+					<div class="alert alert-warning alert-dismissable" align="center">
+						Alert: This site is best viewed with JavaScript enabled. Please enable JavaScript in your browser settings.
+					</div>
+				</div>
+			</noscript>
+		</header>
+		<div class="container">
+			<br>
+			<p class="centered">*Required fields are in bold</p>
+			<form action="fakePage.url" method="POST" class="form-horizontal" onsubmit="return checkFields();">
+				<div class="form-group">
+					<label for="inputName" class="col-sm-4 control-label">Name</label>
+					<div class="col-sm-4">
+					  <input type="text" class="form-control" id="inputName" placeholder="Name">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="inputEmail" class="weak col-sm-4 control-label">Email</label>
+					<div class="col-sm-4">
+					  <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="inputPhone" class="col-sm-4 control-label">Phone</label>
+					<div class="col-sm-4">
+					  <input type="text" class="form-control" id="inputPhone" placeholder="Phone">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="inquiryReason" class="col-sm-4 control-label">Reason for Inquiry</label>
+					<div class="col-sm-4">
+						<select name="inquiryReason" class="form-control" id="inquiryReason">
+							<option value="catering">Catering</option>
+							<option value="privateParty">Private Party</option>
+							<option value="feedback">Feedback</option>
+							<option value="other">Other</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="additionalInfo" class="weak col-sm-4 control-label">Additional Information</label>
+					<div class="col-sm-4">
+						<textarea name="additionalInfo" id="additionalInfo"></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="firstTime" class="weak col-sm-4 control-label">Have you been here before?</label>
+					<div class="col-sm-4">
+						<input type="radio" name="firstTime" value="no" checked>No
+						<input type="radio" name="firstTime" value="yes">Yes
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="bestTime" class="col-sm-4 control-label">Best time to contact you:</label>
+					<div class="col-sm-4">
+						<input type="checkbox" name="bestTime[]" value="mday">M
+						<input type="checkbox" name="bestTime[]" value="tday">T
+						<input type="checkbox" name="bestTime[]" value="wday">W
+						<input type="checkbox" name="bestTime[]" value="thday">TH
+						<input type="checkbox" name="bestTime[]" value="fday">F
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-4 col-sm-4">
+						<button type="submit" class="btn btn-default">Send Request</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<footer class="centered">
+			<br>
+			<p>6 Gnosh Street, Nom Nom City, KY, 00000</p>
+			<p>(123) 456-7890</p>
+		</footer>	
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</body>
+</html>
